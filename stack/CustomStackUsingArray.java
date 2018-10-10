@@ -5,10 +5,10 @@ public class CustomStackUsingArray {
 	
 public static void main(String[] args) {
 
-	Student st1=new Student(1, "Ashu");
-	Student st2=new Student(2, "Gudia");
-	Student st3=new Student(3, "Megha");
-	Student st4=new Student(4, "Nilesh");
+	Student st1=new Student(1, "aaa");
+	Student st2=new Student(2, "bbb");
+	Student st3=new Student(3, "ccc");
+	Student st4=new Student(4, "ddd");
 	Stack<Student> st=new Stack(10);
 	st.push(st1);
 	System.out.println(st.top);
