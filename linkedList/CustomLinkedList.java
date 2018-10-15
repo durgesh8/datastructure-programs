@@ -40,4 +40,39 @@ public class CustomLinkedList {
 			current_node=current_node.next;
 		}
 	}
+	
+	public void insertAfter(Node prevNode,int data){
+		
+		if(prevNode==null){
+			System.out.println("Previous Node cant be null");
+			return;
+		}else{
+			Node new_node=new Node(data);
+			new_node.next=prevNode.next;
+			prevNode.next=new_node;
+		}
+	}
+	
+	public void deleteFromStart(){
+		head=head.next;
+		
+	}
+	
+	public void deleteFromLast(){
+		Node current=head;
+		while(current.next.next!=null)
+			current=current.next;
+		
+		current.next=null;
+	}
+	
+	public int getLength(){
+		Node currrent =head;
+		int len=0;
+		while(currrent!=null){
+			len++;
+			currrent=currrent.next;
+		}
+		return len;
+	}
 }

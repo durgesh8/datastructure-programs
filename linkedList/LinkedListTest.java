@@ -13,5 +13,13 @@ public class LinkedListTest {
 		cLL.insertAtLast(19);
 		System.out.println();
 		cLL.printList();
+		
+		cLL.insertAfter(cLL.head.next.next, 78);
+		System.out.println();
+		cLL.printList();
+		
+		cLL.deleteFromLast();
+		System.out.println();
+		cLL.printList();
 	}
 }
