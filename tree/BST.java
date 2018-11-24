@@ -17,18 +17,46 @@ public class BST {
 		}else{
 			TreeNode currentNode=root;
 			while(true){
-				if(currentNode==null){
-					currentNode=newNode;
-					break;
-				}
-				if(newNode.data<=currentNode.data){
+				TreeNode parent=currentNode;
+				if(data<currentNode.data){
 					currentNode=currentNode.leftChild;
+					if(currentNode==null){
+						parent.leftChild=newNode;
+						break;
+					}
 				}else{
 					currentNode=currentNode.rightChild;
+					if(currentNode==null){
+						parent.rightChild=newNode;
+						break;
+					}
 				}
 			}
 		}
 	}
 	
-	
+	public boolean isPresent(int data){
+		
+		if(root==null)
+			return false;
+		else{
+			TreeNode current=root;
+			while(true){
+				
+				if(current==null)
+					return false;
+				else if(current.data==data)
+					return true;
+				else{
+					if(current.data>data)
+						current=current.leftChild;
+					else
+						current=current.rightChild;
+				}
+			}
+		}
+
+	}
 }
+
+
