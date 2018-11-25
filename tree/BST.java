@@ -57,6 +57,29 @@ public class BST {
 		}
 
 	}
+
+	public void insertDataRec(int data){
+		if(null==root){
+			root=new TreeNode(data);
+		}else{
+			insertusingRec(root, data);
+		}
+		
+	}
+    private TreeNode insertusingRec(TreeNode root,int data){
+    	
+    	if(root==null){
+    		root=new TreeNode(data);
+    	}else{
+    		if(data<root.data)
+        		root.setLeftChild(insertusingRec(root.leftChild, data));
+        	else
+        		root.setRightChild(insertusingRec(root.rightChild, data));
+    	}
+    	
+    	
+    return root;
+    }
 }
 
 
