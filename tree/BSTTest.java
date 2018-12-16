@@ -38,6 +38,8 @@ public class BSTTest {
 		tree.inOrderTraversalWithoutRecursion(tree.root);
 		System.out.println("PostOrderWithoutRecursion");
 		tree.postOrderTraversalwithoutRecursion(tree.root);
+		
+		//System.out.println("Total nodes in tree"+ tree.countAllNode(tree.root,0));
 	}
 }
 

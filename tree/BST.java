@@ -1,9 +1,6 @@
 package tree;
 
-import java.util.Currency;
 import java.util.Stack;
-
-import sun.reflect.generics.tree.Tree;
 
 public class BST {
 
@@ -152,26 +149,29 @@ public class BST {
 		TreeNode cr = root;
 		Stack<TreeNode> st = new Stack<>();
 		while (cr != null || !st.isEmpty()) {
-			while (cr!= null) {
-				if(cr.rightChild!=null){
+			while (cr != null) {
+				if (cr.rightChild != null) {
 					st.add(cr.rightChild);
 					st.add(cr);
 					cr = cr.leftChild;
-				}else{
+				} else {
 					st.add(cr);
-					cr=cr.leftChild;
+					cr = cr.leftChild;
 				}
-					
-				
+
 			}
 
 			TreeNode crr = st.pop();
-			if (!st.isEmpty()&& crr.rightChild == st.peek()) {
-                 cr=st.pop();
-                 st.push(crr);
-			}else
-				System.out.print(crr.data+" ");
+			if (!st.isEmpty() && crr.rightChild == st.peek()) {
+				cr = st.pop();
+				st.push(crr);
+			} else
+				System.out.print(crr.data + " ");
 		}
 	}
-
+	
+	public int countAllNode(TreeNode root){
+		
+		return 0;
+	}
 }
