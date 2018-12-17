@@ -154,4 +154,41 @@ public class BinarySearchTree {
 		
 	}
 	
+	public int countLeafNodeInTree(TreeNode root){
+		if(root==null){
+			return 0;
+		
+		}else if (root.leftChild==null && root.rightChild==null){
+			return 1;
+		}
+			return countLeafNodeInTree(root.leftChild)+countLeafNodeInTree(root.rightChild);
+		}
+	
+	public int countHalfLeafNodeInTree(TreeNode root){
+		if(root==null){
+			return 0;
+		
+		}
+		int res=0;
+		if ((root.leftChild!=null && root.rightChild==null)||(root.leftChild==null && root.rightChild!=null)){
+			 res++;
+		}
+			res=res+ countHalfLeafNodeInTree(root.leftChild)+countHalfLeafNodeInTree(root.rightChild);
+			return res;
+		}
+	
+	public int countFullNodeInTree(TreeNode root){
+		if(root==null){
+			return 0;
+		
+		}
+		int res=0;
+		if (root.leftChild!=null && root.rightChild!=null){
+			res++;
+		}
+			res=res+ countFullNodeInTree(root.leftChild)+countFullNodeInTree(root.rightChild);
+			return res;
+	}
+	
+	
 }

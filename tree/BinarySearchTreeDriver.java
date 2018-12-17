@@ -21,5 +21,10 @@ public class BinarySearchTreeDriver {
 	  bt.preOrderTraversalIteratively(bt.root);
 	  bt.inOrderIteratively(bt.root);
 	  System.out.println(bt.countAllNode(bt.root));
+	  System.out.println(bt.countLeafNodeInTree(bt.root));
+	  System.out.println(bt.countHalfLeafNodeInTree(bt.root));
+	  System.out.println(bt.countFullNodeInTree(bt.root));
 	}
+	
+	
 }
