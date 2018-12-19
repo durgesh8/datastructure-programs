@@ -1,5 +1,7 @@
 package tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinarySearchTree {
@@ -186,9 +188,108 @@ public class BinarySearchTree {
 		if (root.leftChild!=null && root.rightChild!=null){
 			res++;
 		}
-			res=res+ countFullNodeInTree(root.leftChild)+countFullNodeInTree(root.rightChild);
+			res=res+countFullNodeInTree(root.leftChild)+countFullNodeInTree(root.rightChild);
 			return res;
 	}
 	
-	
+    public int countFullNodeIteratively(TreeNode root){
+    
+    	Stack<TreeNode> st=new Stack<>();
+    	int count =0;
+    	while(root!=null){
+    		if(root.leftChild!=null & root.rightChild!=null)
+    			count++;
+    		st.add(root);
+    		root=root.leftChild;
+    	}
+    	while(!st.isEmpty()|| root!=null){
+    		if(root!=null){
+    			if(root.leftChild!=null & root.rightChild!=null)
+        			count++;
+        		st.add(root);
+        		root=root.leftChild;
+    		}
+    		if(root==null){
+    			if(!st.isEmpty()){
+    				TreeNode t= st.pop();
+    				if(t.rightChild!=null){
+    					root=t.rightChild;
+    				}
+    			}
+    		}
+    	}
+    	return count;
+    }
+
+    public void breadthFirstTraversal(TreeNode root){
+    	Stack<TreeNode> st1=new Stack<>();
+    	Stack<TreeNode> st2=new Stack<>();
+    	 st1.add(root);
+    	while(!st1.isEmpty() || !st2.isEmpty()){
+    		
+    			while(!st1.isEmpty()){
+    				TreeNode cr=st1.pop();
+    				System.out.print(cr.data+" ");
+    				if(cr.leftChild!=null)
+    					st2.add(cr.leftChild);
+    				if(cr.rightChild!=null)
+    					st2.add(cr.rightChild);
+    			
+    		}
+    			System.out.println("----------");
+    			while(!st2.isEmpty()){
+    				TreeNode cr=st2.pop();
+    				System.out.print(cr.data+" ");
+    				if(cr.leftChild!=null)
+    					st1.add(cr.leftChild);
+    				if(cr.rightChild!=null)
+    					st1.add(cr.rightChild);
+    			}
+    			System.out.println("-----------");
+    	}
+    }
+
+    public int sumOfTree(TreeNode root){
+    	Queue<TreeNode> queue= new LinkedList<>();
+    	queue.offer(root);
+    	int count =0;
+    	while(!queue.isEmpty()){
+    		TreeNode current=queue.poll();
+    		count=count+current.data;
+    		if(current.rightChild!=null)
+    			queue.offer(current.rightChild);
+    		if(current.leftChild!=null)
+    			queue.offer(current.leftChild);
+    	}
+    	return count;
+    }
+
+    public int sumOfTree2Way(TreeNode root){
+    	if(root ==null)
+    		return 0;
+    	else
+    		return root.data+sumOfTree2Way(root.leftChild)+sumOfTree2Way(root.rightChild);
+    }
+    public boolean isMirror(TreeNode root1,TreeNode root2){
+    	if(root1==null && root2==null)
+    		return true;
+    	if(root1.data!=root2.data)
+    		return false;
+    	else  return (isMirror(root1.leftChild, root2.rightChild) && isMirror(root1.rightChild, root2.leftChild));
+    }
+
+    public void getMirrorImage(TreeNode root){
+    	
+    	if(root==null)
+    		return ;
+    	else{
+    		TreeNode leftNode=root.leftChild;
+    		TreeNode rightNode=root.rightChild;
+    	      root.leftChild=rightNode;
+    	      root.rightChild=leftNode;
+    	      getMirrorImage(root.leftChild);
+    	      getMirrorImage(root.rightChild);
+    	}
+    	
+    }
 }

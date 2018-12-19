@@ -14,7 +14,7 @@ public class BinarySearchTreeDriver {
 	  System.out.println(bt.find(6));
 	  System.out.println(bt.find(7));
 	  System.out.println(bt.find(20));
-	  System.out.println("PreOrderTraversal Rec");
+	  /*System.out.println("PreOrderTraversal Rec");
 	  bt.preOrderRecursion(bt.root);
 	  System.out.println("InOrderTraversal Rec");
 	  bt.inOrderTravRec(bt.root);
@@ -24,6 +24,13 @@ public class BinarySearchTreeDriver {
 	  System.out.println(bt.countLeafNodeInTree(bt.root));
 	  System.out.println(bt.countHalfLeafNodeInTree(bt.root));
 	  System.out.println(bt.countFullNodeInTree(bt.root));
+	  System.out.println(bt.countFullNodeIteratively(bt.root));
+	  System.out.println("BFS");
+	  bt.breadthFirstTraversal(bt.root);
+	  System.out.println("Sum of tree "+bt.sumOfTree(bt.root));*/
+	  bt.breadthFirstTraversal(bt.root);
+	  bt.getMirrorImage(bt.root);
+	  
 	}
 	
 	
