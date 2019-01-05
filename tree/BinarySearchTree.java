@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+import sun.reflect.generics.tree.Tree;
+
 public class BinarySearchTree {
 
 	TreeNode root;
@@ -292,4 +294,107 @@ public class BinarySearchTree {
     	}
     	
     }
+
+    public boolean isBothTreeIdentical(TreeNode root1,TreeNode root2){
+    	if(root1==null && root2==null)
+    		return true;
+    	if(root1.data!=root2.data)
+    		return false;
+    	else
+    		return (isBothTreeIdentical(root1.leftChild, root2.leftChild) && isBothTreeIdentical(root1.rightChild,root2.rightChild));
+    }
+    
+    public TreeNode  getDepestNode(TreeNode root){
+    	Queue<TreeNode> st1=new LinkedList<>();
+    	Queue<TreeNode> st2=new LinkedList<>();
+    	st1.offer(root);
+    	TreeNode result=null;
+    	while(!st1.isEmpty() || !st2.isEmpty()){
+    		if(!st1.isEmpty()){
+    			TreeNode cr=st1.poll();
+    			result=cr;
+    			if(cr.leftChild!=null)
+    				st2.offer(cr.leftChild);
+    			if(cr.rightChild!=null)
+    				st2.offer(cr.rightChild);
+    		}
+    		if(!st2.isEmpty()){
+    			TreeNode cr=st2.poll();
+    			result=cr;
+    			if(cr.leftChild!=null)
+    				st1.offer(cr.leftChild);
+    			if(cr.rightChild!=null)
+    				st1.offer(cr.rightChild);
+    		}
+    	}
+    	return result;
+    }
+
+    /*public TreeNode createTreeUsingPreOrderString(String str){
+    	
+    }*/
+    
+    public int getHeightOfTree(TreeNode root){
+    	if(root==null)
+    		return 0;
+    	else{
+    		int left=getHeightOfTree(root.leftChild);
+    		int right=getHeightOfTree(root.rightChild);
+    		if(left>right)
+    			return left+1;
+    		else return right+1;
+    				
+    	}
+    	
+    }
+ 
+    public int maxSumAtLevel(TreeNode root){
+    	
+    	Queue<TreeNode> st1=new LinkedList<TreeNode>();
+    	Queue<TreeNode> st2=new LinkedList<TreeNode>();
+    	int maxSum=0;
+    	if(root!=null){
+    		st1.add(root);
+    	}
+    	
+    	
+    	while(!st1.isEmpty() || !st2.isEmpty()){
+    		int sum=0;
+    		while(!st1.isEmpty()){
+    			
+    			TreeNode crr=st1.poll();
+    			sum=sum+crr.data;
+    			if(crr.leftChild!=null)
+    				st2.add(crr.leftChild);
+    			if(crr.rightChild!=null)
+    				st2.add(crr.rightChild);
+    		}
+    		if(sum>maxSum)
+    			maxSum=sum;
+    		sum=0;
+    		while(!st2.isEmpty()){
+    			TreeNode crr=st2.poll();
+    			sum=sum+crr.data;
+    			if(crr.leftChild!=null)
+    				st1.add(crr.leftChild);
+    			if(crr.rightChild!=null)
+    				st1.add(crr.rightChild);
+    		}
+    		if(sum>maxSum)
+    			maxSum=sum;
+    		}
+    	
+    
+    return maxSum;
+    }
+   /* public TreeNode convertPreOrderStringToTree(String str){
+    	TreeNode root=null;
+    	char[] ch=str.toCharArray();
+    	if(ch.length!=0){
+    		root= new TreeNode(Integer.valueOf(ch[0]));
+    	}
+    	for(int i=1;i<ch.length;i++){
+    		
+    	}*/
+   
 }

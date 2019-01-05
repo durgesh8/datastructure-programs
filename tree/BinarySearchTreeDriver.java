@@ -26,10 +26,15 @@ public class BinarySearchTreeDriver {
 	  System.out.println(bt.countFullNodeInTree(bt.root));
 	  System.out.println(bt.countFullNodeIteratively(bt.root));
 	  System.out.println("BFS");
-	  bt.breadthFirstTraversal(bt.root);
+	  
 	  System.out.println("Sum of tree "+bt.sumOfTree(bt.root));*/
+	  ////bt.breadthFirstTraversal(bt.root);
+	 // bt.getMirrorImage(bt.root);
+	 // System.out.println("Deepest Node");
+	////  System.out.println(bt.getDepestNode(bt.root).data);
 	  bt.breadthFirstTraversal(bt.root);
-	  bt.getMirrorImage(bt.root);
+	  System.out.println(bt.getHeightOfTree(bt.root));
+	  System.out.println(bt.maxSumAtLevel(bt.root));
 	  
 	}
 	
